@@ -1,0 +1,133 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Maiandra GD";
+}
+
+.front {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.front-text {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
+  z-index: 100;
+  color: antiquewhite;
+  position: absolute;
+
+  /* background-image: -moz-linear-gradient(
+    -80deg,
+    rgb(236, 48, 59) 0%,
+    rgb(255, 153, 102) 100%
+  );
+  background-image: -webkit-linear-gradient(
+    -80deg,
+    rgb(236, 48, 59) 0%,
+    rgb(255, 153, 102) 100%
+  );
+  background-image: -ms-linear-gradient(
+    -80deg,
+    rgb(236, 48, 59) 0%,
+    rgb(255, 153, 102) 100%
+  ); */
+}
+
+.front-item {
+  padding: 30px;
+
+  font-size: 30px;
+  font-family: "Maiandra GD";
+  color: white;
+  line-height: 0.9;
+  text-align: left;
+}
+
+.front-span-title {
+  color: #333333;
+}
+
+.front-skills {
+  color: #333333;
+}
+
+.front-skills-span {
+  color: white;
+}
+
+.front-button {
+  background-color: #333333;
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 140px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.front-button:hover {
+  color: #333333;
+  background-color: white;
+}
+
+.front-button-array {
+  margin-left: 6px;
+  width: 15px;
+}
+
+/* Project */
+.projects {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.projects-title {
+  font-size: 3rem;
+  padding: 60px;
+}
+
+.projects-button {
+  background-color: #333333;
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 140px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 100;
+}
