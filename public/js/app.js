@@ -1,13 +1,44 @@
 let frontButtonArrow = document.querySelector(".front-button-array");
-let frontButton = document.querySelector(".front-button");
+let buttons = document.querySelectorAll(".transition-button");
 let skillButtons = document.querySelectorAll(".skills-table-button");
-
+let form = document.querySelector("form");
+let globSkills;
+let globSkillsCounter = 0;
 //eventListeners
-frontButton.addEventListener("mouseover", function(e) {
-  frontButtonArrow.innerHTML = "&darr;";
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch(`/skills`)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      console.log(result);
+      let skills = [];
+      let emptyArr = Object.values(result).map(obj => {
+        return Object.keys(obj);
+      });
+
+      globSkills = skills
+        .concat(emptyArr[0], emptyArr[1], emptyArr[2])
+        .sort(function() {
+          return 0.5 - Math.random();
+        });
+
+      setTimeout(moveOut, 2000);
+    })
+    .catch(err => console.log(err));
 });
-frontButton.addEventListener("mouseout", function(e) {
-  frontButtonArrow.innerHTML = "&rarr;";
+
+buttons.forEach(button => {
+  button.addEventListener("mouseover", function(e) {
+    e.target.querySelector(".transition-arrow").innerHTML = "&darr;";
+  });
+});
+
+buttons.forEach(button => {
+  button.addEventListener("mouseout", function(e) {
+    e.target.querySelector(".transition-arrow").innerHTML = "&rarr;";
+  });
 });
 
 skillButtons.forEach(button => {
@@ -19,6 +50,14 @@ skillButtons.forEach(button => {
   });
 });
 
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  document.querySelectorAll(".form-item").forEach(item => {
+    item.value = "";
+  });
+});
+
+//functions
 function getData(button, callback) {
   fetch(`/skills`)
     .then(response => {
@@ -91,4 +130,25 @@ function showSkills(item) {
       }
     });
   });
+}
+
+function moveIn() {
+  if (globSkillsCounter === globSkills.length - 1) {
+    globSkillsCounter = 0;
+  }
+  document.querySelector(".front-skills-span").textContent =
+    globSkills[globSkillsCounter];
+
+  globSkillsCounter++;
+  document.querySelector(".front-skills-span").style.opacity = 0;
+  document.querySelector(".front-skills-span").style.opacity = 1;
+
+  setTimeout(moveOut, 2000);
+}
+
+function moveOut() {
+  document.querySelector(".front-skills-span").style.opacity = 1;
+  document.querySelector(".front-skills-span").style.opacity = 0;
+
+  setTimeout(moveIn, 1500);
 }

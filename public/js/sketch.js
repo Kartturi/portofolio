@@ -9,7 +9,7 @@ function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
 
-  background(236, 48, 59);
+  //background(236, 48, 59);
 
   for (let i = 0; i < 20; i++) {
     balls.push(new Ball());

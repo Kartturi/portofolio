@@ -26,12 +26,13 @@
           Stuff I know: <span class="front-skills-span">Seo</span>
         </p>
       </div>
-      <button class="front-button">
-        Take a tour <span class="front-button-array">&rarr;</span>
-      </button>
+      <a class="transition-button front-button" href="#projects">
+        Take a tour
+        <span class="transition-arrow front-button-array">&rarr;</span>
+      </a>
     </section>
 
-    <section class="projects">
+    <section id="projects" class="projects">
       <h2 class="projects-title">Stuff I have been working on</h2>
       <div class="projects-container">
         <div class="project">
@@ -135,11 +136,12 @@
           </div>
         </div>
       </div>
-      <button class="projects-button">
-        lets continue <span class="projects-button-array">&rarr;</span>
-      </button>
+      <a href="#skills" class="transition-button projects-button">
+        lets continue
+        <span class="transition-arrow projects-button-array">&rarr;</span>
+      </a>
     </section>
-    <section class="skills">
+    <section id="skills" class="skills">
       <h2 class="projects-title">My skills with humble self-reflection</h2>
       <div class="skills-table-buttons">
         <button class="skills-table-button table-active">Front-end</button>
@@ -149,7 +151,7 @@
       </div>
 
       <div class="skills-table">
-        <p class="item "></p>
+        <p class="item ">Skills</p>
         <p class="item level-1">Taking baby steps</p>
         <p class="item level-2">Not a total Noob</p>
         <p class="item level-3">I start to understand this stuff</p>
@@ -221,6 +223,81 @@
         <p class="item item-empty item-row-6"></p>
         <p class="item item-empty item-row-6"></p>
         <p class="item item-empty item-row-6"></p>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-me">
+        <div class="about-me-bubble">
+          <div class="bubble-text">
+            <p>Who I am?</p>
+            <p>Where I am?</p>
+          </div>
+        </div>
+        <div class="bubble-pointer bubble-pointer-1"></div>
+        <div class="bubble-pointer bubble-pointer-2"></div>
+        <div class="about-me-img-container">
+          <img src="/img/self2.png" alt="self" />
+        </div>
+        <div class="about-me-text">
+          <ul>
+            <li>Finnish resident located in Vaasa</li>
+            <li>Self-taught web developer</li>
+            <li>Commercial background</li>
+            <li>Likes to do sports</li>
+            <li>Easy-going</li>
+            <li>True Warrior</li>
+          </ul>
+        </div>
+      </div>
+      <div class="about-line-container">
+        <div class="about-line">
+          <div class="window-container">
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+            <div class="windows"></div>
+          </div>
+          <div class="door"></div>
+        </div>
+      </div>
+      <div class="about-form">
+        <p class="about-form-title">Get Touch</p>
+        <form action="/contact" method="POST">
+          <input class="form-item" type="text" placeholder="name" name="name" />
+          <input
+            class="form-item"
+            type="email"
+            placeholder="Email"
+            name="email"
+          />
+          <input
+            class="form-item"
+            type="number"
+            placeholder="Phone"
+            name="number"
+          />
+          <textarea
+            class="form-item form-message"
+            placeholder="Message"
+            name="message"
+          ></textarea>
+          <input type="submit" />
+        </form>
       </div>
     </section>
 
