@@ -8,7 +8,7 @@ const skills = require("./extra/skills");
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -35,4 +35,13 @@ app.post("/contact", (req, res) => {
   res.send({ name, email, phone, message });
 });
 
-app.listen(3000, console.log("listening port 3000"));
+app.get("/wedding", (req, res) => {
+  res.render("wedding");
+});
+app.post("/submit", (req, res) => {
+  const { name } = req.body;
+  console.log(name);
+  res.send({ done: "True", name: name });
+});
+
+app.listen(process.env.PORT || 3000, console.log("server is running"));
