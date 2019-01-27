@@ -1,9 +1,8 @@
-let frontButtonArrow = document.querySelector(".front-button-array");
 let buttons = document.querySelectorAll(".transition-button");
-let skillButtons = document.querySelectorAll(".skills-table-button");
 let form = document.querySelector("form");
 let globSkills;
 let globSkillsCounter = 0;
+let skillButtons = document.querySelectorAll(".skills-table-button");
 //eventListeners
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,13 +30,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 buttons.forEach(button => {
   button.addEventListener("mouseover", function(e) {
-    e.target.querySelector(".transition-arrow").innerHTML = "&darr;";
+    console.log(e.target.innerHTML, "true");
+
+    e.target.querySelector(
+      ".transition-arrow"
+    ).innerHTML = `<i class="fas fa-arrow-down"></i>`;
   });
 });
 
 buttons.forEach(button => {
   button.addEventListener("mouseout", function(e) {
-    e.target.querySelector(".transition-arrow").innerHTML = "&rarr;";
+    console.log("false");
+    e.target.querySelector(
+      ".transition-arrow"
+    ).innerHTML = `<i class="fas fa-arrow-right"></i>`;
   });
 });
 

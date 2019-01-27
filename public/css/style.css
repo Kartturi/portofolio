@@ -16,6 +16,24 @@ body {
   font-family: "Maiandra GD";
 }
 
+.transition-button {
+  font-size: 1.4rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 140px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 100;
+  text-decoration: none;
+}
+/*front*/
 .front {
   width: 100%;
   height: 100%;
@@ -81,21 +99,7 @@ body {
 
 .front-button {
   background-color: #fff;
-  font-size: 1.4rem;
-  border-radius: 4px;
-  border: none;
-  outline: none;
-  padding: 10px;
-  width: 140px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 30px;
-  text-align: center;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  z-index: 100;
-  text-decoration: none;
+
   color: #333333;
 }
 
@@ -289,6 +293,11 @@ body {
   margin-top: 30px;
 }
 
+.skills-button {
+  background-color: #7bbce7;
+  color: #333333;
+}
+
 .item {
   padding: 15px;
   background-color: #333333;
@@ -476,4 +485,11 @@ body {
   outline: none;
   margin: 15px;
   margin-top: 0px;
+}
+
+.about-center-line {
+  width: 1px;
+  height: 100%;
+  background-color: #dcc9c982;
+  margin: 0 auto;
 }

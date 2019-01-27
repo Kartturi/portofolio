@@ -28,7 +28,9 @@
       </div>
       <a class="transition-button front-button" href="#projects">
         Take a tour
-        <span class="transition-arrow front-button-array">&rarr;</span>
+        <span class="transition-arrow front-button-array"
+          ><i class="fas fa-arrow-right"></i
+        ></span>
       </a>
     </section>
 
@@ -113,33 +115,18 @@
             </ul>
           </div>
         </div>
-        <div class="project">
-          <div class="project-side project-front-side">
-            <div class="project-img">
-              <img src="/img/portofolio.JPG" alt="toimistologistiikka" />
-            </div>
-            <div class="project-desc">
-              <p class="project-title">This site</p>
-              <p class="project-sub-title">
-                Use this portofolio for your own, I dont care
-              </p>
-            </div>
-          </div>
-          <div class="project-side project-back-side back-3">
-            <h4>Info</h4>
-            <ul>
-              <li>Vanilla JS</li>
-              <li>P5 framework</li>
-              <li>Heroku</li>
-              <li>CSS Flex & Grid</li>
-            </ul>
-          </div>
-        </div>
       </div>
-      <a href="#skills" class="transition-button projects-button">
-        lets continue
-        <span class="transition-arrow projects-button-array">&rarr;</span>
-      </a>
+      <div class="transition-buttons">
+        <a class="transition-button-back" href="#front"
+          ><i class="fas fa-arrow-up"></i
+        ></a>
+        <a href="#skills" class="transition-button projects-button">
+          lets continue
+          <span class="transition-arrow projects-button-array"
+            ><i class="fas fa-arrow-right"></i
+          ></span>
+        </a>
+      </div>
     </section>
     <section id="skills" class="skills">
       <h2 class="projects-title">My skills with humble self-reflection</h2>
@@ -224,9 +211,16 @@
         <p class="item item-empty item-row-6"></p>
         <p class="item item-empty item-row-6"></p>
       </div>
+
+      <a href="#about" class="transition-button skills-button">
+        lets continue
+        <span class="transition-arrow projects-button-array"
+          ><i class="fas fa-arrow-right"></i
+        ></span>
+      </a>
     </section>
 
-    <section class="about">
+    <section id="about" class="about">
       <div class="about-me">
         <div class="about-me-bubble">
           <div class="bubble-text">
@@ -251,7 +245,8 @@
         </div>
       </div>
       <div class="about-line-container">
-        <div class="about-line">
+        <div class="about-center-line"></div>
+        <!-- <div class="about-line">
           <div class="window-container">
             <div class="windows"></div>
             <div class="windows"></div>
@@ -273,7 +268,7 @@
             <div class="windows"></div>
           </div>
           <div class="door"></div>
-        </div>
+        </div> -->
       </div>
       <div class="about-form">
         <p class="about-form-title">Get Touch</p>

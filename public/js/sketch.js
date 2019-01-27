@@ -5,8 +5,11 @@ let accChangeX = 0;
 let accChangeY = 0;
 let accChangeT = 0;
 
+let canvasElement = document.querySelector("canvas");
+
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
+  canvas.style("display", "block");
   canvas.position(0, 0);
 
   //background(236, 48, 59);
