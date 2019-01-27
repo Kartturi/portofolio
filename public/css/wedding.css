@@ -80,6 +80,11 @@ input[type="submit"] {
     filter: grayscale(25%);
     transform: translateX(calc((100% - 100vw) / 2));
   }
+
+  body {
+    height: auto;
+  }
+
   h1 {
     font-size: 30px;
   }
@@ -94,5 +99,11 @@ input[type="submit"] {
 
   .decoration-submit {
     font-size: 14px;
+  }
+
+  .container {
+    align-items: flex-start;
+    margin-top: 50px;
+    height: auto;
   }
 }
