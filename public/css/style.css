@@ -178,6 +178,10 @@ body {
   display: none;
 }
 
+.project-side-mobile-tap {
+  display: none;
+}
+
 .project-back-side h4 {
   font-size: 2.6rem;
   text-align: center;

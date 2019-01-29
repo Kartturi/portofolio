@@ -44,6 +44,12 @@
   .project-side-mobile-button {
     display: block;
   }
+
+  .project-side-mobile-tap {
+    display: block;
+    color: gray;
+    text-align: center;
+  }
   /*skills */
   .skills {
     height: auto;
