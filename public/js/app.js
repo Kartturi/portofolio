@@ -116,6 +116,14 @@ function showSkills(item) {
       if (cycle > score) {
         cell.innerHTML = "";
       } else {
+        //check if mobile site
+        let winWidth = window.innerWidth;
+
+        if (winWidth < 820) {
+          console.log("working");
+          cell.innerHTML = `<i class="fas fa-futbol fa-xs"></i>`;
+          return;
+        }
         switch (cycle) {
           case 1:
             cell.innerHTML = `<i class="fas fa-futbol fa-xs"></i>`;
