@@ -63,6 +63,35 @@ form.addEventListener("submit", event => {
   });
 });
 
+if (window.innerWidth < 820) {
+  let projectFrontSide = document.querySelectorAll(".project-front-side");
+
+  projectFrontSide.forEach(project => {
+    project.addEventListener("click", event => {
+      console.log(event);
+      let project = event.path[3];
+      let front = project.querySelector(".project-front-side");
+      let back = project.querySelector(".project-back-side");
+      front.style.transform = "rotateY(-180deg)";
+      back.style.transform = "rotateY(0)";
+    });
+  });
+
+  let projectBackButton = document.querySelectorAll(
+    ".project-side-mobile-button"
+  );
+
+  projectBackButton.forEach(button => {
+    button.addEventListener("click", event => {
+      let project = event.path[3];
+      let front = project.querySelector(".project-front-side");
+      let back = project.querySelector(".project-back-side");
+      front.style.transform = "rotateY(0)";
+      back.style.transform = "rotateY(180deg)";
+    });
+  });
+}
+
 //functions
 function getData(button, callback) {
   fetch(`/skills`)

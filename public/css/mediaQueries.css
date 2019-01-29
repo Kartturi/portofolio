@@ -40,6 +40,10 @@
   .project:last-child {
     margin-bottom: 60px;
   }
+
+  .project-side-mobile-button {
+    display: block;
+  }
   /*skills */
   .skills {
     height: auto;
