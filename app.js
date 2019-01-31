@@ -6,6 +6,18 @@ const app = express();
 
 const skills = require("./extra/skills");
 
+//google sheet api
+const fs = require("fs");
+const readline = require("readline");
+const { google } = require("googleapis");
+// If modifying these scopes, delete token.json.
+const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
+// The file token.json stores the user's access and refresh tokens, and is
+// created automatically when the authorization flow completes for the first
+// time.
+const TOKEN_PATH = "token.json";
+const googleSheetFunc = require("./extra/googleSheet");
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,9 +42,23 @@ app.get("/skills", (req, res) => {
 });
 
 app.post("/contact", (req, res) => {
-  const { name, email, phone, message } = req.body;
+  const formData = req.body;
+  console.log(req.body);
+  // Load client secrets from a local file.
+  fs.readFile("credentials.json", (err, content) => {
+    if (err) {
+      res.send({ status: "error", message: "something went wrong" });
+      return console.log("Error loading client secret file:", err);
+    }
+    // Authorize a client with credentials, then call the Google Sheets API.
+    googleSheetFunc.authorize(
+      JSON.parse(content),
+      formData,
+      googleSheetFunc.getTouch
+    );
 
-  res.send({ name, email, phone, message });
+    res.send({ status: "succes", message: "Message succesfully sented" });
+  });
 });
 
 app.get("/wedding", (req, res) => {
@@ -42,6 +68,17 @@ app.post("/submit", (req, res) => {
   const { name } = req.body;
   console.log(name);
   res.send({ done: "True", name: name });
+
+  // Load client secrets from a local file.
+  fs.readFile("credentials.json", (err, content) => {
+    if (err) return console.log("Error loading client secret file:", err);
+    // Authorize a client with credentials, then call the Google Sheets API.
+    googleSheetFunc.authorize(
+      JSON.parse(content),
+      name,
+      googleSheetFunc.listMajors
+    );
+  });
 });
 
 app.listen(process.env.PORT || 3000, console.log("server is running"));

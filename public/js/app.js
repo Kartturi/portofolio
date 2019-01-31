@@ -57,10 +57,42 @@ skillButtons.forEach(button => {
 });
 
 form.addEventListener("submit", event => {
+  let formInput = [];
+  let formData = {
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  };
   event.preventDefault();
   document.querySelectorAll(".form-item").forEach(item => {
+    formInput.push(item.value);
     item.value = "";
   });
+
+  formData.name = formInput[0];
+  formData.email = formInput[1];
+  formData.phone = formInput[2];
+  formData.message = formInput[3];
+  console.log(formData, "from from data");
+  fetch(`/contact`, {
+    headers: {
+      "Content-Type": "application/json"
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    method: "POST",
+    body: JSON.stringify(formData)
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result, "from result");
+      let statusMessage = document.querySelector(".about-form-status-message");
+      statusMessage.textContent = result.message;
+
+      setTimeout(() => {
+        statusMessage.textContent = "";
+      }, 4000);
+    });
 });
 
 //functions

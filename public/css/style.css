@@ -498,3 +498,7 @@ body {
   background-color: #dcc9c982;
   margin: 0 auto;
 }
+
+.about-form-status-message {
+  font-size: 1.2rem;
+}
