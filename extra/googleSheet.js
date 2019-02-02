@@ -4,7 +4,7 @@ const { google } = require("googleapis");
 
 //const portofolioSheet = require("./secret/portfolioSheet");
 
-const google_token = require("../config/keys_prod.js").googleToken;
+const google_token = require("../config/keys_prod.js");
 const google_portofolioSheet = require("../config/keys_prod.js")
   .portofolioSheet;
 
@@ -30,7 +30,7 @@ function authorize(credentials, data, callback) {
   );
 
   if (process.env.NODE_ENV === "production") {
-    console.log(google_token, "from google token");
+    console.log(google_token, process.env.GOOGLE_TOKEN, "from google token");
     oAuth2Client.setCredentials(JSON.parse(google_token));
     callback(oAuth2Client, data);
   } else {
