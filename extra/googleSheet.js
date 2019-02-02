@@ -4,7 +4,7 @@ const { google } = require("googleapis");
 
 //const portofolioSheet = require("./secret/portfolioSheet");
 
-const google_token = require("../config/keys_prod.js");
+const google_token = require("../config/keys_prod.js").googleToken;
 const google_portofolioSheet = require("../config/keys_prod.js")
   .portofolioSheet;
 
