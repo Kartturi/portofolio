@@ -80,7 +80,7 @@ app.post("/submit", (req, res) => {
     // Authorize a client with credentials, then call the Google Sheets API.
     googleSheetFunc.authorize(
       JSON.parse(googleCredentials),
-      formData,
+      name,
       googleSheetFunc.getTouch
     );
 
@@ -95,7 +95,7 @@ app.post("/submit", (req, res) => {
       // Authorize a client with credentials, then call the Google Sheets API.
       googleSheetFunc.authorize(
         JSON.parse(content),
-        formData,
+        name,
         googleSheetFunc.listMajors
       );
 
