@@ -30,6 +30,7 @@ function authorize(credentials, data, callback) {
   );
 
   if (process.env.NODE_ENV === "production") {
+    console.log(google_token, "from google token");
     oAuth2Client.setCredentials(JSON.parse(google_token));
     callback(oAuth2Client, data);
   } else {
