@@ -2,11 +2,11 @@ const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
 
-const portofolioSheet = require("./secret/portfolioSheet");
+//const portofolioSheet = require("./secret/portfolioSheet");
 
 const google_token = require("../config/keys_prod.js").googleToken;
-const google_portofolioSheet = require("../config/keys_prod.js").portofolioSheet
-  .PORTOFOLIO_SHEET;
+const google_portofolioSheet = require("../config/keys_prod.js")
+  .portofolioSheet;
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
@@ -92,7 +92,7 @@ function listMajors(auth, name) {
       spreadsheetId:
         process.env.NODE_ENV === "production"
           ? google_portofolioSheet
-          : portofolioSheet,
+          : "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
       range: "Sheet1!A2",
       valueInputOption: "RAW",
       resource
@@ -134,7 +134,10 @@ function getTouch(auth, data, res) {
   const sheets = google.sheets({ version: "v4", auth });
   sheets.spreadsheets.values.append(
     {
-      spreadsheetId: portofolioSheet,
+      spreadsheetId:
+        process.env.NODE_ENV === "production"
+          ? google_portofolioSheet
+          : "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
       range: "Sheet2!A2:D2",
       valueInputOption: "RAW",
       resource
