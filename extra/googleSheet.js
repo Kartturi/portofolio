@@ -4,7 +4,9 @@ const { google } = require("googleapis");
 
 const portofolioSheet = require("./secret/portfolioSheet");
 
-const google_token = require("../config/keys_prod.js").GOOGLE_TOKEN;
+const google_token = require("../config/keys_prod.js").googleToken;
+const google_portofolioSheet = require("../config/keys_prod.js").portofolioSheet
+  .PORTOFOLIO_SHEET;
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
@@ -87,7 +89,10 @@ function listMajors(auth, name) {
   const sheets = google.sheets({ version: "v4", auth });
   sheets.spreadsheets.values.append(
     {
-      spreadsheetId: portofolioSheet,
+      spreadsheetId:
+        process.env.NODE_ENV === "production"
+          ? google_portofolioSheet
+          : portofolioSheet,
       range: "Sheet1!A2",
       valueInputOption: "RAW",
       resource

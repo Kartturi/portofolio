@@ -10,7 +10,7 @@ const skills = require("./extra/skills");
 const fs = require("fs");
 
 const googleSheetFunc = require("./extra/googleSheet");
-const googleCredentials = require("./config/keys_prod").GOOGLE_CREDENTIALS;
+const googleCredentials = require("./config/keys_prod").googleCredentials;
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
