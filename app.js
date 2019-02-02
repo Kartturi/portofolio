@@ -8,14 +8,7 @@ const skills = require("./extra/skills");
 
 //google sheet api
 const fs = require("fs");
-const readline = require("readline");
-const { google } = require("googleapis");
-// If modifying these scopes, delete token.json.
-const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-// The file token.json stores the user's access and refresh tokens, and is
-// created automatically when the authorization flow completes for the first
-// time.
-const TOKEN_PATH = "token.json";
+
 const googleSheetFunc = require("./extra/googleSheet");
 
 app.set("view engine", "ejs");
@@ -25,6 +18,7 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.render("index");
+  console.log(process.env.GOOGLE_TOKEN);
 });
 
 app.get("/projects", (req, res) => {
