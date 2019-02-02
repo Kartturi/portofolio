@@ -81,10 +81,8 @@ app.post("/submit", (req, res) => {
     googleSheetFunc.authorize(
       JSON.parse(googleCredentials),
       name,
-      googleSheetFunc.getTouch
+      googleSheetFunc.listMajors
     );
-
-    res.send({ status: "succes", message: "Message succesfully sented" });
   } else {
     // Load client secrets from a local file.
     fs.readFile("credentials.json", (err, content) => {
@@ -98,8 +96,6 @@ app.post("/submit", (req, res) => {
         name,
         googleSheetFunc.listMajors
       );
-
-      res.send({ status: "succes", message: "Message succesfully sented" });
     });
   }
 });
