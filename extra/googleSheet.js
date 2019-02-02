@@ -4,6 +4,8 @@ const { google } = require("googleapis");
 
 const portofolioSheet = require("./secret/portfolioSheet");
 
+const google_token = require("../config/keys_prod.js").GOOGLE_TOKEN;
+
 // If modifying these scopes, delete token.json.
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 // The file token.json stores the user's access and refresh tokens, and is
@@ -25,12 +27,18 @@ function authorize(credentials, data, callback) {
     redirect_uris[0]
   );
 
-  // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, (err, token) => {
+  if (process.env.NODE_ENV === "production") {
     if (err) return getNewToken(oAuth2Client, callback);
-    oAuth2Client.setCredentials(JSON.parse(token));
+    oAuth2Client.setCredentials(JSON.parse(google_token));
     callback(oAuth2Client, data);
-  });
+  } else {
+    // Check if we have previously stored a token.
+    fs.readFile(TOKEN_PATH, (err, token) => {
+      if (err) return getNewToken(oAuth2Client, callback);
+      oAuth2Client.setCredentials(JSON.parse(token));
+      callback(oAuth2Client, data);
+    });
+  }
 }
 
 /**

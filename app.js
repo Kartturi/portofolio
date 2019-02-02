@@ -10,6 +10,7 @@ const skills = require("./extra/skills");
 const fs = require("fs");
 
 const googleSheetFunc = require("./extra/googleSheet");
+const googleCredentials = require("./config/keys_prod").GOOGLE_CREDENTIALS;
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -18,7 +19,6 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.render("index");
-  console.log(process.env.GOOGLE_TOKEN);
 });
 
 app.get("/projects", (req, res) => {
@@ -38,26 +38,43 @@ app.get("/skills", (req, res) => {
 app.post("/contact", (req, res) => {
   const formData = req.body;
   console.log(req.body);
-  // Load client secrets from a local file.
-  fs.readFile("credentials.json", (err, content) => {
+
+  if (process.env.NODE_ENV === "production") {
     if (err) {
       res.send({ status: "error", message: "something went wrong" });
       return console.log("Error loading client secret file:", err);
     }
     // Authorize a client with credentials, then call the Google Sheets API.
     googleSheetFunc.authorize(
-      JSON.parse(content),
+      JSON.parse(googleCredentials),
       formData,
       googleSheetFunc.getTouch
     );
 
     res.send({ status: "succes", message: "Message succesfully sented" });
-  });
+  } else {
+    // Load client secrets from a local file.
+    fs.readFile("credentials.json", (err, content) => {
+      if (err) {
+        res.send({ status: "error", message: "something went wrong" });
+        return console.log("Error loading client secret file:", err);
+      }
+      // Authorize a client with credentials, then call the Google Sheets API.
+      googleSheetFunc.authorize(
+        JSON.parse(content),
+        formData,
+        googleSheetFunc.getTouch
+      );
+
+      res.send({ status: "succes", message: "Message succesfully sented" });
+    });
+  }
 });
 
 app.get("/wedding", (req, res) => {
   res.render("wedding");
 });
+
 app.post("/submit", (req, res) => {
   const { name } = req.body;
   console.log(name);
