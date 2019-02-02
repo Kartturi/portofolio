@@ -40,10 +40,6 @@ app.post("/contact", (req, res) => {
   console.log(req.body);
 
   if (process.env.NODE_ENV === "production") {
-    if (err) {
-      res.send({ status: "error", message: "something went wrong" });
-      return console.log("Error loading client secret file:", err);
-    }
     // Authorize a client with credentials, then call the Google Sheets API.
     googleSheetFunc.authorize(
       JSON.parse(googleCredentials),
