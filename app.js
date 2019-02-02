@@ -76,16 +76,32 @@ app.post("/submit", (req, res) => {
   console.log(name);
   res.send({ done: "True", name: name });
 
-  // Load client secrets from a local file.
-  fs.readFile("credentials.json", (err, content) => {
-    if (err) return console.log("Error loading client secret file:", err);
+  if (process.env.NODE_ENV === "production") {
     // Authorize a client with credentials, then call the Google Sheets API.
     googleSheetFunc.authorize(
-      JSON.parse(content),
-      name,
-      googleSheetFunc.listMajors
+      JSON.parse(googleCredentials),
+      formData,
+      googleSheetFunc.getTouch
     );
-  });
+
+    res.send({ status: "succes", message: "Message succesfully sented" });
+  } else {
+    // Load client secrets from a local file.
+    fs.readFile("credentials.json", (err, content) => {
+      if (err) {
+        res.send({ status: "error", message: "something went wrong" });
+        return console.log("Error loading client secret file:", err);
+      }
+      // Authorize a client with credentials, then call the Google Sheets API.
+      googleSheetFunc.authorize(
+        JSON.parse(content),
+        formData,
+        googleSheetFunc.listMajors
+      );
+
+      res.send({ status: "succes", message: "Message succesfully sented" });
+    });
+  }
 });
 
 app.listen(process.env.PORT || 3000, console.log("server is running"));
