@@ -9,6 +9,7 @@
 body {
   height: 100vh;
   font-family: "Tangerine", cursive;
+  background: beige;
 }
 
 #myVideo {

@@ -57,6 +57,7 @@ skillButtons.forEach(button => {
 });
 
 form.addEventListener("submit", event => {
+  let statusMessage = document.querySelector(".about-form-status-message");
   let formInput = [];
   let formData = {
     name: "",
@@ -67,13 +68,20 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   document.querySelectorAll(".form-item").forEach(item => {
     formInput.push(item.value);
-    item.value = "";
   });
 
   formData.name = formInput[0];
   formData.email = formInput[1];
   formData.phone = formInput[2];
   formData.message = formInput[3];
+  if (formData.name === "") {
+    console.log("hype");
+    statusMessage.textContent = "fill the blanks will ya";
+    setTimeout(() => {
+      statusMessage.textContent = "";
+    }, 4000);
+    return;
+  }
   console.log(formData, "from from data");
   fetch(`/contact`, {
     headers: {
@@ -86,7 +94,7 @@ form.addEventListener("submit", event => {
     .then(response => response.json())
     .then(result => {
       console.log(result, "from result");
-      let statusMessage = document.querySelector(".about-form-status-message");
+
       statusMessage.textContent = result.message;
 
       setTimeout(() => {

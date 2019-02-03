@@ -514,3 +514,7 @@ body {
 .about-form-status-message {
   font-size: 1.2rem;
 }
+
+.form-item-submit {
+  cursor: pointer;
+}
