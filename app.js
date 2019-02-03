@@ -1,7 +1,7 @@
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
-
+const nodemailer = require("nodemailer");
 const app = express();
 
 const skills = require("./extra/skills");
@@ -69,6 +69,9 @@ app.post("/contact", (req, res) => {
 
 app.get("/wedding", (req, res) => {
   res.render("wedding");
+});
+app.get("/wedding1", (req, res) => {
+  res.render("wedding1");
 });
 
 app.post("/submit", (req, res) => {
