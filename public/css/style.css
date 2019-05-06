@@ -277,7 +277,7 @@ table, th, td {
 
 .skills {
   width: 100%;
-  height: auto;
+  height: 100%;
   position: relative;
   background-color: #333333;
   color: #666666;
