@@ -1,3 +1,35 @@
+@media only screen and (max-width: 1400px) {
+  .projects {
+    height: auto;
+  }
+
+  .projects-button {
+    position: static;
+    margin: 0;
+  position: absolute;
+  
+  left: 50%;
+  transform: translate(-50%, 0%);
+  }
+
+  .skills {
+    height: auto;
+  }
+
+  .skills-btn-container {
+    width: 100%;
+    height: 100px;
+    
+    position: relative;
+  }
+
+  .about {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+
 @media only screen and (max-width: 820px) {
   /*Front */
   .front-text {
@@ -28,6 +60,7 @@
 
   .projects {
     height: auto;
+    
   }
   .projects-title {
     font-size: 3rem;
@@ -51,35 +84,26 @@
     text-align: center;
   }
   /*skills */
+  
   .skills {
     height: auto;
   }
+  
+
+  .skills-table {
+    
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
   .skills-table-button {
     padding: 10px;
   }
 
-  .skills-table {
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-    margin-bottom: 30px;
-  }
+  
 
-  .skills-table .item {
-    font-size: 1.1rem;
-  }
-
-  .skills-mobile {
-    display: block;
-  }
-
-  .level-4 {
-    display: none;
-  }
-  .mobile-remove {
-    display: none;
-    background-color: green;
-    color: green;
-  }
+  
+  
 
   /*about */
   .about {
@@ -147,8 +171,17 @@
   }
 
   /*skills */
+  .skills-table {
+    font-size: 1rem;
+  }
   .skills-table-button {
     font-size: 1rem;
+  }
+
+  table, th, td {
+    
+    padding: 10px 0px 10px 0px;
+    
   }
 
   /*about */

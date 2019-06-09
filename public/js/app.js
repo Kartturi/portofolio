@@ -13,19 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(result => {
       console.log(result);
       let skills = [];
-      let emptyArr = Object.values(result).map(obj => {
-        return Object.keys(obj);
+      
+
+      globSkills = skills.concat(result.frontEnd, result.backEnd,result.marketing).map(item => {
+        console.log(item, "from item");
+        return item.skill;
+      }).sort(function() {
+        return 0.5 - Math.random();
       });
-
-      globSkills = skills
-        .concat(emptyArr[0], emptyArr[1], emptyArr[2])
-        .sort(function() {
-          return 0.5 - Math.random();
-        });
-
-      setTimeout(moveOut, 2000);
+      console.log(globSkills);
+      setTimeout(moveOut, 1000);
     })
     .catch(err => console.log(err));
+
+    //skilldata init
+    getData("Front-end", showResults);
+
+  
 });
 
 buttons.forEach(button => {
@@ -166,54 +170,55 @@ function showResults(button, result) {
 
 function showFrontEndSkills() {}
 function showSkills(item) {
-  let skills = [];
+  
+  let table = document.querySelector(".skills-table");
 
-  for (let prop in item) {
-    skills.push(prop);
+  deleteRows(table);
+  
+
+  for (let prop of item) {
+    let row = table.insertRow();
+    let skillName = row.insertCell(0);
+    skillName.innerHTML = prop.skill
+    for(let i = 1; i<=3; i++) {
+      let text = ""
+      let cell = row.insertCell(-1)
+      console.log(prop.score);
+      if(prop.score === i) {
+        text = randomBalls();
+      } 
+      cell.innerHTML = text;
+
+      
+    }
   }
-  document.querySelectorAll(".item-empty").forEach(cell => {
-    cell.textContent = "";
-  });
-  skills.map((skill, index) => {
-    let cycle = 0;
-
-    document.querySelector(`.subject-${index + 1}`).textContent = skill;
-    document.querySelectorAll(`.item-row-${index + 2}`).forEach(cell => {
-      cycle++;
-      let score = item[skill];
-
-      if (cycle > score) {
-        cell.innerHTML = "";
-      } else {
-        //check if mobile site
-        let winWidth = window.innerWidth;
-
-        if (winWidth < 820) {
-          console.log("working");
-          cell.innerHTML = `<i class="fas fa-futbol fa-xs"></i>`;
-          return;
-        }
-        switch (cycle) {
-          case 1:
-            cell.innerHTML = `<i class="fas fa-futbol fa-xs"></i>`;
-            break;
-          case 2:
-            cell.innerHTML = `<i class="fas fa-futbol fa-sm"></i>`;
-            break;
-          case 3:
-            cell.innerHTML = `<i class="fas fa-futbol fa-lg"></i>`;
-            break;
-          case 4:
-            cell.innerHTML = `<i class="fas fa-futbol fa-2x"></i>`;
-            break;
-          case 5:
-            cell.innerHTML = `<i class="fas fa-futbol fa-3x"></i>`;
-            break;
-        }
-      }
-    });
-  });
+  
+  
 }
+
+function randomBalls() {
+  let balls = [
+    "volleyball-ball",
+    "football-ball",
+    
+    "basketball-ball",
+    "baseball-ball",
+    "golf-ball",
+    "table-tennis"
+  ]
+
+  let randomball = balls[Math.floor(Math.random() * (balls.length+1))] || "football-ball"
+  console.log(randomball);
+  return `<i class="fas fa-${randomball}"></i>`
+}
+
+function deleteRows(table) {
+  let rowLength =  table.rows.length;
+
+  for(let i = rowLength -1; i > 0; i--) {
+     table.deleteRow(i);
+  }
+ }
 
 function moveIn() {
   if (globSkillsCounter === globSkills.length - 1) {
@@ -226,12 +231,12 @@ function moveIn() {
   document.querySelector(".front-skills-span").style.opacity = 0;
   document.querySelector(".front-skills-span").style.opacity = 1;
 
-  setTimeout(moveOut, 2000);
+  setTimeout(moveOut, 1000);
 }
 
 function moveOut() {
   document.querySelector(".front-skills-span").style.opacity = 1;
   document.querySelector(".front-skills-span").style.opacity = 0;
 
-  setTimeout(moveIn, 1500);
+  setTimeout(moveIn, 1000);
 }
