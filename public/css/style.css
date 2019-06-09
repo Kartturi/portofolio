@@ -270,7 +270,9 @@ table {
   border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #666666;
   padding: 15px;
 }
@@ -313,32 +315,23 @@ table, th, td {
   width: 70%;
   margin: 0 auto;
   margin-top: 30px;
-  color: #D0D4C8
+  color: #d0d4c8;
 }
 
-.skills-table tbody tr{
+.skills-table tbody tr {
   border: 2px solid #666666;
 }
-
-
-
-
-
 
 .skills-button {
   background-color: #7bbce7;
   color: #333333;
 }
 
-
-
-
-
 /*about*/
 
 .about {
   width: 100%;
-  height: auto;
+  height: 100vh;
   position: relative;
   background-image: -moz-linear-gradient(
     177deg,
