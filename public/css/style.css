@@ -210,6 +210,10 @@ body {
   background-color: #ef4243;
 }
 
+.back-4 {
+  background-color: #6d593b;
+}
+
 .project:hover .project-front-side {
   transform: rotateY(-180deg);
 }

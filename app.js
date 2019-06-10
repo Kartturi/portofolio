@@ -3,7 +3,8 @@ const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const app = express();
-
+const favicon = require("serve-favicon");
+const path = require("path");
 const skills = require("./extra/skills");
 
 //google sheet api
@@ -11,7 +12,7 @@ const fs = require("fs");
 
 const googleSheetFunc = require("./extra/googleSheet");
 const googleCredentials = require("./config/keys_prod").googleCredentials;
-
+app.use(favicon(path.join(__dirname, "public", "img", "favicon.ico")));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
