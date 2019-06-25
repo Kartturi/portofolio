@@ -215,6 +215,10 @@ body {
   background-color: #6d593b;
 }
 
+.back-work {
+  background-color: #be37be;
+}
+
 .project:hover .project-front-side {
   transform: rotateY(-180deg);
 }
@@ -270,6 +274,10 @@ body {
   z-index: 100;
   text-decoration: none;
   color: white;
+}
+
+.workfinder {
+  border-top: 1px solid black;
 }
 
 /* Skills =============*/

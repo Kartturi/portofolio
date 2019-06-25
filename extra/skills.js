@@ -5,7 +5,8 @@ module.exports = {
     { score: 3, skill: "Javascript" },
     { score: 3, skill: "React" },
     { score: 2, skill: "Redux" },
-    { score: 2, skill: "Sass" }
+    { score: 2, skill: "Sass" },
+    { score: 1, skill: "Vue" }
   ],
   backEnd: [
     { score: 2, skill: "NodeJs" },
