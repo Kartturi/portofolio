@@ -145,6 +145,10 @@ body {
   position: relative;
 }
 
+.empty-project {
+  height: 0px;
+}
+
 .project-side {
   transition: all 0.8s ease;
   position: absolute;
