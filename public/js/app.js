@@ -13,28 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(result => {
       console.log(result);
       let skills = [];
-      
 
-      globSkills = skills.concat(result.frontEnd, result.backEnd,result.marketing).map(item => {
-        console.log(item, "from item");
+
+      globSkills = skills.concat(result.frontEnd, result.backEnd, result.marketing).map(item => {
         return item.skill;
-      }).sort(function() {
+      }).sort(function () {
         return 0.5 - Math.random();
       });
-      console.log(globSkills);
       setTimeout(moveOut, 1000);
     })
     .catch(err => console.log(err));
 
-    //skilldata init
-    getData("Front-end", showResults);
+  //skilldata init
+  getData("Front-end", showResults);
 
-  
+
 });
 
 buttons.forEach(button => {
-  button.addEventListener("mouseover", function(e) {
-    console.log(e.target.innerHTML, "true");
+  button.addEventListener("mouseover", function (e) {
 
     e.target.querySelector(
       ".transition-arrow"
@@ -43,8 +40,7 @@ buttons.forEach(button => {
 });
 
 buttons.forEach(button => {
-  button.addEventListener("mouseout", function(e) {
-    console.log("false");
+  button.addEventListener("mouseout", function (e) {
     e.target.querySelector(
       ".transition-arrow"
     ).innerHTML = `<i class="fas fa-arrow-right"></i>`;
@@ -149,18 +145,13 @@ function getData(button, callback) {
 }
 
 function showResults(button, result) {
-  console.log(button, "from showResults");
   switch (button) {
     case "Back-end":
       showSkills(result.backEnd);
       break;
 
-    case "Marketing":
+    case "Marketing & Others":
       showSkills(result.marketing);
-      break;
-
-    case "Other":
-      showSkills(result.other);
       break;
 
     default:
@@ -168,57 +159,57 @@ function showResults(button, result) {
   }
 }
 
-function showFrontEndSkills() {}
+function showFrontEndSkills() { }
 function showSkills(item) {
-  
+
   let table = document.querySelector(".skills-table");
 
   deleteRows(table);
-  
+
 
   for (let prop of item) {
     let row = table.insertRow();
     let skillName = row.insertCell(0);
     skillName.innerHTML = prop.skill
-    for(let i = 1; i<=3; i++) {
+    for (let i = 1; i <= 3; i++) {
       let text = ""
       let cell = row.insertCell(-1)
       console.log(prop.score);
-      if(prop.score === i) {
+      if (prop.score === i) {
         text = randomBalls();
-      } 
+      }
       cell.innerHTML = text;
 
-      
+
     }
   }
-  
-  
+
+
 }
 
 function randomBalls() {
   let balls = [
     "volleyball-ball",
     "football-ball",
-    
+
     "basketball-ball",
     "baseball-ball",
     "golf-ball",
     "table-tennis"
   ]
 
-  let randomball = balls[Math.floor(Math.random() * (balls.length+1))] || "football-ball"
+  let randomball = balls[Math.floor(Math.random() * (balls.length + 1))] || "football-ball"
   console.log(randomball);
   return `<i class="fas fa-${randomball}"></i>`
 }
 
 function deleteRows(table) {
-  let rowLength =  table.rows.length;
+  let rowLength = table.rows.length;
 
-  for(let i = rowLength -1; i > 0; i--) {
-     table.deleteRow(i);
+  for (let i = rowLength - 1; i > 0; i--) {
+    table.deleteRow(i);
   }
- }
+}
 
 function moveIn() {
   if (globSkillsCounter === globSkills.length - 1) {

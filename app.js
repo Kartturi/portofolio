@@ -104,4 +104,4 @@ app.post("/submit", (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, console.log("server is running"));
+app.listen(process.env.PORT || 3000, console.log("server is running in port 3000"));
